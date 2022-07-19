@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
-
+from torch.utils.tensorboard import SummaryWriter
+from data import data_train_loader as data_train_loader
 
 class LeNet(nn.Module):
 
@@ -27,4 +28,7 @@ class LeNet(nn.Module):
 if __name__ == "__main__":
     model = LeNet()
     ret = model(torch.randn(1, 1, 32, 32))
+    writer = SummaryWriter()
+    writer.add_graph(model, data_train_loader)
+    writer.close()
     print(ret.shape)

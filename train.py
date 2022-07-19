@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 from model import LeNet
 from data import data_train_loader as data_train_loader
+from torch.utils.tensorboard import SummaryWriter
 
 model = LeNet()
 model.train()
@@ -12,6 +13,7 @@ optimizer = torch.optim.SGD(model.parameters(), lr=lr, momentum=0.9, weight_deca
 train_loss = 0
 correct = 0
 total = 0
+
 
 for batch_idx, (inputs, targets) in enumerate(data_train_loader):
     optimizer.zero_grad()
