@@ -28,7 +28,5 @@ class LeNet(nn.Module):
 if __name__ == "__main__":
     model = LeNet()
     ret = model(torch.randn(1, 1, 32, 32))
-    writer = SummaryWriter()
-    writer.add_graph(model, data_train_loader)
-    writer.close()
+
     print(ret.shape)
